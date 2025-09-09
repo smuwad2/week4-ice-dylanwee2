@@ -13,40 +13,36 @@
    <!-- add a button here for adding new item -->
    <button onclick="add_li_element()">Enter</button>
    <ul id="unorderedList">
-      <li>Notebook <button onclick="delete_li_element(this)">Delete</button></li>
-      <li>Jello <button onclick="delete_li_element(this)">Delete</button></li>
-      <li>Spinach <button onclick="delete_li_element(this)">Delete</button></li>
-      <li>Rice <button onclick="delete_li_element(this)">Delete</button></li>
-      <li>Birthday Cake <button onclick="delete_li_element(this)">Delete</button></li>
-      <li>Candles <button onclick="delete_li_element(this)">Delete</button></li>
+      <li>Notebook <button onclick="removeItem(this.parentNode)">delete</button></li>
+      <li>Jello <button onclick="removeItem(this.parentNode)">delete</button></li>
+      <li>Spinach <button onclick="removeItem(this.parentNode)">delete</button></li>
+      <li>Rice <button onclick="removeItem(this.parentNode)">delete</button></li>
+      <li>Birthday Cake <button onclick="removeItem(this.parentNode)">delete</button></li>
+      <li>Candles <button onclick="removeItem(this.parentNode)">delete</button></li>
    </ul>
 
    <script>
 
       // add code here
       function add_li_element(){
-         // Create an element
-         var newItem = document.createElement("li");
+         const newItemValue = document.getElementById("inputText").value;
+         const ulElem = document.getElementsByTagName("ul")[0];
+         const liElem = document.createElement("li");
+         liElem.innerText = newItemValue;
+         
 
-         // Get new input value
-         var newItemValue = document.getElementById("inputText").value;
-         console.log(newItemValue);
-
-         // Create a node
-         var node = document.createTextNode(newItemValue);
-
-         // Append node to element
-         newItem.appendChild(node);
-
-         // Access UL element
-         var ul = document.getElementById("unorderedList");
-
-         ul.appendChild(newItem);
+         // Add delete button
+         const newDeleteButton = document.createElement("button");
+         newDeleteButton.innerText = "delete";
+         newDeleteButton.addEventListener("click", function(){
+            this.parentNode.remove();
+         });
+         liElem.append(newDeleteButton);
+         ulElem.appendChild(liElem);
       }
 
-      function delete_li_element(button_element){
-         var li = button_element.parentElement;
-         li.remove();
+      function removeItem(li_element){
+         li_element.remove();
       }
       
    </script>
