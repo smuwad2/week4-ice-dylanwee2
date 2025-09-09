@@ -46,7 +46,7 @@
                     errorMessages += "Age must be between 10 and 40. \n";
                 }
 
-                if(email.indexOf("a") == -1 ){
+                if(email.indexOf("@") == -1 ){
                     errorMessages += "Email must contain the character @. \n";
                 }
 
@@ -54,9 +54,16 @@
                     errorMessages += "Password must be non-empty. \n";
                 }
 
-                if(errorMessages){
+                
+                if(errorMessages.length == 0){
+                    return true;
+                }
+                else{
                     alert(errorMessages);
                 }
+                return false;
+                // Return false will not submit the form
+                // Return true will submit the form
             }
      
          </script>
