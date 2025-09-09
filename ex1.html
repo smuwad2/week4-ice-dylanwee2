@@ -50,7 +50,7 @@
                     errorMessages += "Email must contain the character @. \n";
                 }
 
-                if (password == ""){
+                if (!password && password.length == 0){
                     errorMessages += "Password must be non-empty. \n";
                 }
 
