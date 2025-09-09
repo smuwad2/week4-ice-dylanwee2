@@ -11,20 +11,44 @@
 
    <input type="text" id="inputText">
    <!-- add a button here for adding new item -->
-
-   <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
+   <button onclick="add_li_element()">Enter</button>
+   <ul id="unorderedList">
+      <li>Notebook <button onclick="delete_li_element(this)">Delete</button></li>
+      <li>Jello <button onclick="delete_li_element(this)">Delete</button></li>
+      <li>Spinach <button onclick="delete_li_element(this)">Delete</button></li>
+      <li>Rice <button onclick="delete_li_element(this)">Delete</button></li>
+      <li>Birthday Cake <button onclick="delete_li_element(this)">Delete</button></li>
+      <li>Candles <button onclick="delete_li_element(this)">Delete</button></li>
    </ul>
 
    <script>
 
       // add code here
+      function add_li_element(){
+         // Create an element
+         var newItem = document.createElement("li");
 
+         // Get new input value
+         var newItemValue = document.getElementById("inputText").value;
+         console.log(newItemValue);
+
+         // Create a node
+         var node = document.createTextNode(newItemValue);
+
+         // Append node to element
+         newItem.appendChild(node);
+
+         // Access UL element
+         var ul = document.getElementById("unorderedList");
+
+         ul.appendChild(newItem);
+      }
+
+      function delete_li_element(button_element){
+         var li = button_element.parentElement;
+         li.remove();
+      }
+      
    </script>
 
 </body>
